@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kyle.firstspringbootproject.mapper.StudentMapper">
+    <resultMap id="StudentMap" type="com.kyle.firstspringbootproject.pojo.StudentBean">
+        <id column="Id" property="id" jdbcType="INTEGER"/>
+        <result column="Name" property="name" jdbcType="NVARCHAR"/>
+        <result column="Sex" property="sex" jdbcType="CHAR" javaType="com.kyle.firstspringbootproject.constant.StudentSexEnum" typeHandler="com.kyle.firstspringbootproject.until.BaseEnumTypeHandler"/>
+        <result column="Birth" property="birth" jdbcType="TIMESTAMP"/>
+        <result column="Phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="Address" property="address" jdbcType="NVARCHAR"/>
+        <result column="InUser" property="inUser" jdbcType="NVARCHAR"/>
+        <result column="InDate" property="inDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <select id="getStudentById" parameterType="java.lang.Integer" resultMap="StudentMap">
+        SELECT TOP (1) [Id]
+              ,[Name]
+              ,[Sex]
+              ,[Birth]
+              ,[Phone]
+              ,[Address]
+              ,[InUser]
+              ,[InDate]
+          FROM [dbo].[Student] WITH(NOLOCK) WHERE [Id] = #{id}
+    </select>
+</mapper>

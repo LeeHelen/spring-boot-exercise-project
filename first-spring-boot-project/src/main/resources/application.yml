@@ -1,0 +1,21 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /kyle
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=DailyExercise
+    username: sa
+    password: 123456
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: UTC
+mybatis:
+  type-aliases-package: com.kyle.firstspringbootproject.pojo
+  mapper-locations: classpath:mapper/*.xml
+  type-handlers-package: com.kyle.firstspringbootproject.until
